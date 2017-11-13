@@ -1,6 +1,6 @@
 ## Demo
 
-https://teodorkolev.github.io/PaperRockScissors/
+https://teodorkolev.github.io/RockPaperScissors/
 
 ## Available Scripts
 
