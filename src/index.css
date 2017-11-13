@@ -34,3 +34,11 @@ body {
 .pusher {
   padding-bottom: 20px;
 }
+button:focus {
+  outline: 0 !important;
+}
+.btn-success {
+	border-radius: 0px !important;
+    background: #39425a !important;
+    border-color: #39425a !important;
+}
