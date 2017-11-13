@@ -1,8 +1,8 @@
 {
-  "name": "paperRockScissors",
+  "name": "RockPaperScissors",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://TeodorKolev.github.io/PaperRockScissors",
+  "homepage": "https://TeodorKolev.github.io/RockPaperScissors",
   "dependencies": {
     "bootstrap": "^3.3.7",
     "react": "^16.0.0",

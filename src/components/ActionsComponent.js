@@ -5,7 +5,7 @@ import './ActionComponent.css'
 
 function ActionsComponent(props) {
   let images = require.context('../assets/img/', true)
-  const choices = [Constants.PAPER, Constants.ROCK, Constants.SCISSORS]
+  const choices = [Constants.ROCK, Constants.PAPER, Constants.SCISSORS]
   return(
     <Grid className={`fade ${props.loadingState ? 'hided' : 'shown'}`}>
       <Row className="show-grid pusher">

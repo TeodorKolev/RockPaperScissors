@@ -1,3 +1,8 @@
 .scoreboard-holder {
     padding-top: 18px !important;
 }
+@media only screen and (max-width : 768px) {
+    span {
+        font-size: 24px;
+    }
+}
