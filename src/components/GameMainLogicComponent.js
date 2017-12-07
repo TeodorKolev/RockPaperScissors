@@ -22,7 +22,6 @@ class GameMainLogicComponent extends Component {
   constructor(props) {
     super(props);
     this.restartGame = this.restartGame.bind(this)
-    this.startGame = this.startGame.bind(this)
     this.state = initialState;
   }
 
@@ -55,7 +54,7 @@ class GameMainLogicComponent extends Component {
   restartGame() {
     this.props.setRestart()
     this.setState(initialState);
-    this.startGame(true)
+ /*   this.startGame(true)*/
   }
 
   hideScoreAlert() {
@@ -63,12 +62,6 @@ class GameMainLogicComponent extends Component {
       toggleUserScore: false,
       toggleComputerScore: false,
       toggleDraw: false,
-    })
-  }
-
-  startGame(currentState) {
-    this.setState({
-      gameStartedState: currentState
     })
   }
 
@@ -113,10 +106,8 @@ class GameMainLogicComponent extends Component {
   render() {
     return (
       <div>
-        {!this.state.gameStartedState ?
-          <StartScreenComponent
-            startGame={this.startGame}
-          />
+        {!this.props.gameStarted ?
+          <StartScreenComponent />
           :
           <div>
             <ScoreBoardComponent
@@ -149,6 +140,7 @@ class GameMainLogicComponent extends Component {
 
 const mapStateToProps = state => {
   return {
+    gameStarted: state.gameStarted,
     gameStartedState: state.gameStartedState,
     userChoice: state.userChoice,
     computerChoice: state.computerChoice,

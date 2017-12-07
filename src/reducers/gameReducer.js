@@ -1,4 +1,5 @@
 const initialState = {
+  gameStarted: false,
   userScore: 0,
   computerScore: 0,
   drawScore: 0,
@@ -9,6 +10,10 @@ const initialState = {
 
 const game = (state = initialState, action) => {
   switch (action.type) {
+    case 'GAME_STARTED':
+      return Object.assign({}, state, {
+        gameStarted: action.gameStarted
+      })
     case 'USER_CHOICE':
       return Object.assign({}, state, {
         userChoice: action.userChoice,
