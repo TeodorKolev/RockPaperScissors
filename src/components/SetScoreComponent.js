@@ -3,16 +3,21 @@ import * as Constants from '../utils/constants';
 import {connect} from 'react-redux';
 import { Row, Col } from 'react-bootstrap'
 import {
-  setComputerScore,
-  setDrawScore,
-  setUserScore
+  setScore
 } from '../actions/gameActions';
 import './SetScoreComponent.css';
+import {DRAW_SCORE} from "../utils/constants";
+import {USER_SCORE} from "../utils/constants";
+import {COMPUTER_SCORE} from "../utils/constants";
 
 class SetScoreComponent extends Component {
 
   constructor(props) {
     super(props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+   console.log(nextProps.userChoice)
   }
 
   componentDidMount() {
@@ -25,16 +30,16 @@ class SetScoreComponent extends Component {
 
   setScore(userChoice, computerChoice) {
     if (userChoice === computerChoice) {
-      return this.props.setDrawScore();
+      return this.props.setScore(DRAW_SCORE);
     }
     if (userChoice === Constants.ROCK) {
-      return computerChoice === Constants.SCISSORS ? this.props.setUserScore() : this.props.setComputerScore();
+      return computerChoice === Constants.SCISSORS ? this.props.setScore(USER_SCORE) : this.props.setScore(COMPUTER_SCORE);
     }
     if (userChoice === Constants.PAPER) {
-      return computerChoice === Constants.ROCK ? this.props.setUserScore() : this.props.setComputerScore();
+      return computerChoice === Constants.ROCK ? this.props.setScore(USER_SCORE) : this.props.setScore(COMPUTER_SCORE);
     }
     if (userChoice === Constants.SCISSORS) {
-      return computerChoice === Constants.ROCK ? this.props.setComputerScore() : this.props.setUserScore();
+      return computerChoice === Constants.ROCK ? this.props.setScore(COMPUTER_SCORE) : this.props.setScore(USER_SCORE);
     }
   }
 
@@ -64,9 +69,7 @@ class SetScoreComponent extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setUserScore: () => { dispatch(setUserScore()) },
-    setComputerScore: () => { dispatch(setComputerScore()) },
-    setDrawScore: () => { dispatch(setDrawScore()) },
+    setScore: (choice) => { dispatch(setScore(choice)) },
   }
 }
 

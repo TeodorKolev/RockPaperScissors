@@ -1,39 +1,27 @@
-const USER_SCORE = 'USER_SCORE'
-const COMPUTER_CHOICE = 'COMPUTER_CHOICE'
-const DRAW_SCORE = 'DRAW_SCORE'
-const USER_CHOICE = 'USER_CHOICE'
-const COMPUTER_SCORE = 'COMPUTER_SCORE'
-const RESTART = 'RESTART'
+export const setChoice = (type, choice) => {
+  return {
+    type: type,
+    choice: choice
+  }
+}
 
-export const setUserChoice = userChoice => {
+export const setScore = type => {
   return {
-    type: USER_CHOICE,
-    userChoice: userChoice
+    type: type
   }
 }
-export const setComputerChoice = computerChoice => {
+
+export const setToggle = (type, value) => {
   return {
-    type: COMPUTER_CHOICE,
-    computerChoice: computerChoice
+    type: type,
+    value: value,
   }
 }
-export const setUserScore = () => {
+
+export const setCycle = (type, value) => {
   return {
-    type: USER_SCORE
+    type: type,
+    value: value,
   }
 }
-export const setComputerScore = () => {
-  return {
-    type: COMPUTER_SCORE
-  }
-}
-export const setDrawScore = () => {
-  return {
-    type: DRAW_SCORE
-  }
-}
-export const setRestart = () => {
-  return {
-    type: RESTART,
-  }
-}
+

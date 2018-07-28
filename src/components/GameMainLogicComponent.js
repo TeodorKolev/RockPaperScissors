@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setUserChoice, setComputerChoice, setRestart } from '../actions/gameActions'
+import { setChoice, setCycle } from '../actions/gameActions'
 import ScoreBoardComponent from './ScoreBoardComponent'
 import ActionsComponent from './ActionsComponent'
 import StartScreenComponent from './StartScreenComponent'
@@ -8,6 +8,8 @@ import EndScreenComponent from './EndScreenComponent'
 import * as Constants from '../utils/constants'
 import * as GameSettings from '../utils/gameSettings'
 import SetScoreComponent from './SetScoreComponent';
+import {COMPUTER_CHOICE} from "../utils/constants";
+import {RESTART} from "../utils/constants";
 
 const initialState = {
   gameStartedState: false,
@@ -54,7 +56,7 @@ class GameMainLogicComponent extends Component {
   }
 
   restartGame() {
-    this.props.setRestart()
+    this.props.setCycle(RESTART)
     this.setState(initialState);
     this.startGame(true)
   }
@@ -85,11 +87,11 @@ class GameMainLogicComponent extends Component {
     setTimeout(function() {
       let computerChoice = Math.random();
       if (computerChoice < 0.34) {
-        this.props.setComputerChoice(Constants.ROCK)
+        this.props.setChoice(COMPUTER_CHOICE, Constants.ROCK)
       } else if(computerChoice <= 0.67) {
-        this.props.setComputerChoice(Constants.PAPER)
+        this.props.setChoice(COMPUTER_CHOICE, Constants.PAPER)
       } else {
-        this.props.setComputerChoice(Constants.SCISSORS)
+        this.props.setChoice(COMPUTER_CHOICE, Constants.SCISSORS)
       }
       this.setScoreRef.setScore(this.props.userChoice, this.props.computerChoice);
       this.setLoadingState(false)
@@ -126,7 +128,6 @@ class GameMainLogicComponent extends Component {
               :
               <ActionsComponent
                 loadingState={this.state.loadingState}
-                setUserChoice={this.props.setUserChoice}
               />
               }
           </div>
@@ -150,9 +151,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setUserChoice: (userChoice) => { dispatch(setUserChoice(userChoice)) },
-    setComputerChoice: (computerChoice) => { dispatch(setComputerChoice(computerChoice)) },
-    setRestart: () => { dispatch(setRestart()) }
+    setChoice: (type, choice) => { dispatch(setChoice(type, choice)) },
+    setCycle: () => { dispatch(setCycle()) }
   }
 }
 
