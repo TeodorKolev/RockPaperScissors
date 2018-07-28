@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setUserScore, setComputerScore, setDrawScore, setUserChoice, setComputerChoice,
-  setRestart } from '../actions/gameActions'
+import { setUserChoice, setComputerChoice, setRestart } from '../actions/gameActions'
 import ScoreBoardComponent from './ScoreBoardComponent'
 import ActionsComponent from './ActionsComponent'
 import StartScreenComponent from './StartScreenComponent'
@@ -30,7 +29,7 @@ class GameMainLogicComponent extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.round !== 0 && nextProps.round !== this.props.round) {
-      this.setComputerChoice()
+      this.setComputerChoice();
     }
     if (nextProps.userScore > 0 || nextProps.computerScore > 0 || nextProps.drawScore > 0) {
       if (nextProps.userScore === GameSettings.VICTORY_SCORE || nextProps.computerScore === GameSettings.VICTORY_SCORE) {
@@ -80,21 +79,6 @@ class GameMainLogicComponent extends Component {
     })
   }
 
-  setScore(userChoice, computerChoice) {
-    if (userChoice === computerChoice) {
-      return this.props.setDrawScore();
-    }
-    if (userChoice === Constants.ROCK) {
-      return computerChoice === Constants.SCISSORS ? this.props.setUserScore() : this.props.setComputerScore();
-    }
-    if (userChoice === Constants.PAPER) {
-      return computerChoice === Constants.ROCK ? this.props.setUserScore() : this.props.setComputerScore();
-    }
-    if (userChoice === Constants.SCISSORS) {
-      return computerChoice === Constants.ROCK ? this.props.setComputerScore() : this.props.setUserScore();
-    }
-  }
-
   setComputerChoice() {
     this.hideScoreAlert()
     this.setLoadingState(true)
@@ -107,8 +91,7 @@ class GameMainLogicComponent extends Component {
       } else {
         this.props.setComputerChoice(Constants.SCISSORS)
       }
-      // this.setScore(this.props.userChoice, this.props.computerChoice)
-      this.child .setScore(this.props.userChoice, this.props.computerChoice);
+      this.child.setScore(this.props.userChoice, this.props.computerChoice);
       this.setLoadingState(false)
     }.bind(this), GameSettings.FADE_DELAY);
   }
@@ -171,9 +154,6 @@ const mapDispatchToProps = dispatch => {
   return {
     setUserChoice: (userChoice) => { dispatch(setUserChoice(userChoice)) },
     setComputerChoice: (computerChoice) => { dispatch(setComputerChoice(computerChoice)) },
-    setUserScore: () => { dispatch(setUserScore()) },
-    setComputerScore: () => { dispatch(setComputerScore()) },
-    setDrawScore: () => { dispatch(setDrawScore()) },
     setRestart: () => { dispatch(setRestart()) }
   }
 }

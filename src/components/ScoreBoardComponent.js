@@ -8,20 +8,6 @@ function ScoreBoardComponent(props) {
   return(
     <div className='score-board-holder'>
       <Grid>
-        <Row className="show-grid">
-          <Col xsOffset={0} xs={3} mdOffset={2} md={2}>
-            <div>You</div>
-            <div>{props.userScore}</div>
-          </Col>
-          <Col xs={6} md={4}>
-            <div className='vs'>VS</div>
-            <div className='rules'>First to three wins!</div>
-          </Col>
-          <Col xs={3} md={2}>
-            <div>PC</div>
-            <div>{props.computerScore}</div>
-          </Col>
-        </Row>
         <Row className="show-grid pusher">
           <Col xsOffset={0} xs={3} mdOffset={2} md={2}>
             {props.userChoice ?

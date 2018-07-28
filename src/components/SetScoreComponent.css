@@ -1,0 +1,14 @@
+.score-board-holder {
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+.vs {
+    font-size: 44px;
+    color: #d4425c;
+}
+.rules {
+    font-size: 18px;
+    font-weight: normal;
+    font-style: italic;
+}

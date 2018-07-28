@@ -6,20 +6,21 @@ import {
   setComputerScore,
   setDrawScore,
   setUserScore
-} from "../actions/gameActions";
+} from '../actions/gameActions';
+import './SetScoreComponent.css';
 
 class SetScoreComponent extends Component {
 
   constructor(props) {
-    console.log(props)
     super(props);
   }
 
   componentDidMount() {
-    this.props.onRef(this)
+    this.props.onRef(this);
   }
+
   componentWillUnmount() {
-    this.props.onRef(undefined)
+    this.props.onRef(undefined);
   }
 
   setScore(userChoice, computerChoice) {
@@ -39,20 +40,24 @@ class SetScoreComponent extends Component {
 
   render() {
     return (
-      <Row className="show-grid">
-        <Col xsOffset={0} xs={3} mdOffset={2} md={2}>
-          <div>You</div>
-          <div>{this.props.userScore}</div>
-        </Col>
-        <Col xs={6} md={4}>
-          <div className='vs'>VS</div>
-          <div className='rules'>First to three wins!</div>
-        </Col>
-        <Col xs={3} md={2}>
-          <div>PC</div>
-          <div>{this.props.computerScore}</div>
-        </Col>
-      </Row>
+      <div className='score-board-holder'>
+        <div className="container">
+          <Row className="show-grid">
+            <Col xsOffset={0} xs={3} mdOffset={2} md={2}>
+              <div>You</div>
+              <div>{this.props.userScore}</div>
+            </Col>
+            <Col xs={6} md={4}>
+              <div className='vs'>VS</div>
+              <div className='rules'>First to three wins!</div>
+            </Col>
+            <Col xs={3} md={2}>
+              <div>PC</div>
+              <div>{this.props.computerScore}</div>
+            </Col>
+          </Row>
+        </div>
+      </div>
     )
   }
 }
