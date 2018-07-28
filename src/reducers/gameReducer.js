@@ -17,6 +17,7 @@ import {
 } from "../utils/gameSettings";
 
 const initialState = {
+  gameStartedState: false,
   userScore: DEFAULT_USER_SCORE,
   computerScore: DEFAULT_COMPUTER_SCORE,
   drawScore: DEFAULT_DRAW_SCORE,
@@ -49,7 +50,9 @@ const game = (state = initialState, action) => {
         drawScore: state.drawScore + 1,
       })
     case START:
-      return initialState
+      return Object.assign({}, state, {
+        gameStartedState: state,
+      })
     case LOADING:
       return initialState
     case RESTART:

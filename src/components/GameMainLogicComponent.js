@@ -101,10 +101,8 @@ class GameMainLogicComponent extends Component {
   render() {
     return (
       <div>
-        {!this.state.gameStartedState ?
-          <StartScreenComponent
-            startGame={this.startGame}
-          />
+        {!this.props.gameStartedState ?
+          <StartScreenComponent />
           :
           <div>
             <SetScoreComponent
