@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setChoice, setCycle } from '../actions/gameActions'
+import {setChoice, setCycle, setToggle} from '../actions/gameActions'
 import ScoreBoardComponent from './ScoreBoardComponent'
 import ActionsComponent from './ActionsComponent'
 import StartScreenComponent from './StartScreenComponent'
@@ -10,19 +10,18 @@ import * as GameSettings from '../utils/gameSettings'
 import SetScoreComponent from './SetScoreComponent';
 import {COMPUTER_CHOICE} from "../utils/constants";
 import {RESTART} from "../utils/constants";
+import {TOGGLE_USER_SCORE} from "../utils/constants";
+import {TOGGLE_COMPUTER_SCORE} from "../utils/constants";
+import {TOGGLE_DRAW_SCORE} from "../utils/constants";
 
 const initialState = {
   loadingState: false,
-  toggleUserScore: false,
-  toggleComputerScore: false,
-  toggleDraw: false,
   toggleOver: false,
 };
 
 class GameMainLogicComponent extends Component {
   constructor(props) {
     super(props);
-
     this.restartGame = this.restartGame.bind(this)
     this.state = initialState;
   }
@@ -36,20 +35,20 @@ class GameMainLogicComponent extends Component {
         this.setState({toggleOver: true});
       } else {
         if (nextProps.userScore !== this.props.userScore) {
-          this.toggleState('toggleUserScore')
+          this.toggleResult(TOGGLE_USER_SCORE)
         } else if (nextProps.computerScore !== this.props.computerScore) {
-          this.toggleState('toggleComputerScore')
+          this.toggleResult(TOGGLE_COMPUTER_SCORE)
         } else if (nextProps.drawScore !== this.props.drawScore) {
-          this.toggleState('toggleDraw')
+          this.toggleResult(TOGGLE_DRAW_SCORE)
         }
       }
     }
   }
 
-  toggleState(prop) {
-    this.setState({[prop]: true});
+  toggleResult(type) {
+    this.props.setToggle(type, true)
     setTimeout(function () {
-      this.setState({[prop]: false});
+      this.props.setToggle(type, false)
     }.bind(this), GameSettings.FADE_DELAY);
   }
 
@@ -59,11 +58,9 @@ class GameMainLogicComponent extends Component {
   }
 
   hideScoreAlert() {
-    this.setState({
-      toggleUserScore: false,
-      toggleComputerScore: false,
-      toggleDraw: false,
-    })
+    this.props.setToggle(TOGGLE_USER_SCORE, false)
+    this.props.setToggle(TOGGLE_COMPUTER_SCORE, false)
+    this.props.setToggle(TOGGLE_DRAW_SCORE, false)
   }
 
   setLoadingState(currentState) {
@@ -79,7 +76,7 @@ class GameMainLogicComponent extends Component {
       let computerChoice = Math.random();
       if (computerChoice < 0.34) {
         this.props.setChoice(COMPUTER_CHOICE, Constants.ROCK)
-      } else if(computerChoice <= 0.67) {
+      } else if (computerChoice <= 0.67) {
         this.props.setChoice(COMPUTER_CHOICE, Constants.PAPER)
       } else {
         this.props.setChoice(COMPUTER_CHOICE, Constants.SCISSORS)
@@ -103,9 +100,6 @@ class GameMainLogicComponent extends Component {
               userChoice={this.props.userChoice}
               computerChoice={this.props.computerChoice}
               loadingState={this.state.loadingState}
-              toggleUserScore={this.state.toggleUserScore}
-              toggleComputerScore={this.state.toggleComputerScore}
-              toggleDraw={this.state.toggleDraw}
             />
             {this.state.toggleOver ?
               <EndScreenComponent
@@ -132,6 +126,7 @@ const mapStateToProps = state => {
     userScore: state.userScore,
     computerScore: state.computerScore,
     drawScore: state.drawScore,
+    toggleDrawScore: state.toggleDrawScore,
     round: state.round
   }
 }
@@ -139,7 +134,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setChoice: (type, choice) => { dispatch(setChoice(type, choice)) },
-    setCycle: (type) => { dispatch(setCycle(type)) }
+    setCycle: (type) => { dispatch(setCycle(type)) },
+    setToggle: (type, value) => { dispatch(setToggle(type, value)) }
   }
 }
 

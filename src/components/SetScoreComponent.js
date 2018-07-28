@@ -16,10 +16,6 @@ class SetScoreComponent extends Component {
     super(props);
   }
 
-  componentWillReceiveProps(nextProps) {
-   console.log(nextProps.userScore)
-  }
-
   componentDidMount() {
     this.props.onRef(this);
   }

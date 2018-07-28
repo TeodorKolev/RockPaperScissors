@@ -17,11 +17,7 @@ function ScoreBoardComponent(props) {
             }
           </Col>
           <Col xs={6} md={4}>
-            <ScoreAlertComponent
-              toggleUserScore={props.toggleUserScore}
-              toggleComputerScore={props.toggleComputerScore}
-              toggleDraw={props.toggleDraw}
-            />
+            <ScoreAlertComponent />
           </Col>
           {!props.loadingState ?
             <Col xs={3} md={2}>
