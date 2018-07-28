@@ -12,7 +12,6 @@ import {COMPUTER_CHOICE} from "../utils/constants";
 import {RESTART} from "../utils/constants";
 
 const initialState = {
-  gameStartedState: false,
   loadingState: false,
   toggleUserScore: false,
   toggleComputerScore: false,
@@ -25,7 +24,6 @@ class GameMainLogicComponent extends Component {
     super(props);
 
     this.restartGame = this.restartGame.bind(this)
-    this.startGame = this.startGame.bind(this)
     this.state = initialState;
   }
 
@@ -66,12 +64,6 @@ class GameMainLogicComponent extends Component {
       toggleUserScore: false,
       toggleComputerScore: false,
       toggleDraw: false,
-    })
-  }
-
-  startGame(currentState) {
-    this.setState({
-      gameStartedState: currentState
     })
   }
 

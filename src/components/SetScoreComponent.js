@@ -17,7 +17,7 @@ class SetScoreComponent extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-   console.log(nextProps.userChoice)
+   console.log(nextProps.userScore)
   }
 
   componentDidMount() {
