@@ -8,6 +8,7 @@ import StartScreenComponent from './StartScreenComponent'
 import EndScreenComponent from './EndScreenComponent'
 import * as Constants from '../utils/constants'
 import * as GameSettings from '../utils/gameSettings'
+import SetScoreComponent from "./SetScoreComponent";
 
 const initialState = {
   gameStartedState: false,
@@ -21,6 +22,7 @@ const initialState = {
 class GameMainLogicComponent extends Component {
   constructor(props) {
     super(props);
+
     this.restartGame = this.restartGame.bind(this)
     this.startGame = this.startGame.bind(this)
     this.state = initialState;
@@ -105,7 +107,8 @@ class GameMainLogicComponent extends Component {
       } else {
         this.props.setComputerChoice(Constants.SCISSORS)
       }
-      this.setScore(this.props.userChoice, this.props.computerChoice)
+      // this.setScore(this.props.userChoice, this.props.computerChoice)
+      this.child .setScore(this.props.userChoice, this.props.computerChoice);
       this.setLoadingState(false)
     }.bind(this), GameSettings.FADE_DELAY);
   }
@@ -119,6 +122,11 @@ class GameMainLogicComponent extends Component {
           />
           :
           <div>
+            <SetScoreComponent
+              onRef={ref => (this.child = ref)}
+              userScore={this.props.userScore}
+              computerScore={this.props.computerScore}
+            />
             <ScoreBoardComponent
               userScore={this.props.userScore}
               computerScore={this.props.computerScore}
