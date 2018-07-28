@@ -56,7 +56,6 @@ class GameMainLogicComponent extends Component {
   restartGame() {
     this.props.setCycle(RESTART)
     this.setState(initialState);
-    this.startGame(true)
   }
 
   hideScoreAlert() {
@@ -99,8 +98,6 @@ class GameMainLogicComponent extends Component {
           <div>
             <SetScoreComponent
               onRef={ref => (this.setScoreRef = ref)}
-              userScore={this.props.userScore}
-              computerScore={this.props.computerScore}
             />
             <ScoreBoardComponent
               userChoice={this.props.userChoice}
@@ -142,7 +139,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setChoice: (type, choice) => { dispatch(setChoice(type, choice)) },
-    setCycle: () => { dispatch(setCycle()) }
+    setCycle: (type) => { dispatch(setCycle(type)) }
   }
 }
 

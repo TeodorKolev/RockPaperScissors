@@ -67,10 +67,18 @@ class SetScoreComponent extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    userScore: state.userScore,
+    computerScore: state.computerScore
+  };
+}
+
+
 const mapDispatchToProps = dispatch => {
   return {
     setScore: (choice) => { dispatch(setScore(choice)) },
   }
 }
 
-export default connect(null, mapDispatchToProps)(SetScoreComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(SetScoreComponent)
