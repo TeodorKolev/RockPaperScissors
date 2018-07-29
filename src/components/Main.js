@@ -13,8 +13,7 @@ import SetScore from "./SetScore";
 class Main extends Component {
 
   componentWillReceiveProps(nextProps) {
-    if ((nextProps.userScore !== this.props.userScore || nextProps.computerScore !== this.props.computerScore) &&
-      (nextProps.userScore === GameSettings.VICTORY_SCORE || nextProps.computerScore === GameSettings.VICTORY_SCORE)) {
+    if (nextProps.userScore === GameSettings.VICTORY_SCORE || nextProps.computerScore === GameSettings.VICTORY_SCORE) {
       this.props.setCycle(END, true)
     }
   }
@@ -44,9 +43,9 @@ class Main extends Component {
 const mapStateToProps = state => {
   return {
     gameStartedState: state.gameStartedState,
+    gameEndedState: state.gameEndedState,
     userScore: state.userScore,
     computerScore: state.computerScore,
-    gameEndedState: state.gameEndedState
   }
 }
 

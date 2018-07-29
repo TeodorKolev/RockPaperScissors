@@ -25,7 +25,7 @@ const game = (state = initialState, action) => {
   switch (action.type) {
     case START:
       return Object.assign({}, state, {
-        gameStartedState: state,
+        gameStartedState: action.value,
       })
     case LOADING:
       return Object.assign({}, state, {
@@ -33,7 +33,7 @@ const game = (state = initialState, action) => {
       })
     case END:
       return Object.assign({}, state, {
-        gameEndedState: state,
+        gameEndedState: action.value,
       })
     case RESTART:
       return initialState

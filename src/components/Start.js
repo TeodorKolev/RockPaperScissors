@@ -14,7 +14,7 @@ class Start extends Component {
           <Col mdOffset={4} md={4}>
             <h4>Welcome to <b>Rock / Paper / Scissors</b> Challenge!</h4>
             <p>
-              <Button bsSize="large" bsStyle="success" onClick={() => this.props.startGame(START, true)}>Play</Button>
+              <Button bsSize="large" bsStyle="success" onClick={() => this.props.setCycle(START, true)}>Play</Button>
             </p>
           </Col>
         </Row>
@@ -26,7 +26,7 @@ class Start extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    startGame: (type, value) => { dispatch(setCycle(type, value)) },
+    setCycle: (type, value) => { dispatch(setCycle(type, value)) },
   }
 }
 

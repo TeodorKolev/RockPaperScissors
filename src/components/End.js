@@ -4,7 +4,7 @@ import * as GameSettings from '../utils/gameSettings'
 import './End.css'
 import { setCycle} from "../actions/gameActions";
 import {connect} from "react-redux";
-import {RESTART} from "../utils/constants";
+import {RESTART, START} from "../utils/constants";
 
 class End extends Component {
 
@@ -23,7 +23,8 @@ class End extends Component {
           }
           <Row className="show-grid">
             <Col mdOffset={4} md={4}>
-              <Button bsSize="large" bsStyle="success" onClick={() => {this.props.setCycle(RESTART, true)}}>
+              <Button bsSize="large" bsStyle="success" onClick={() => {
+                this.props.setCycle(RESTART, true); this.props.setCycle(START, true)}}>
                 Play Again
               </Button>
             </Col>
