@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import ScoreAlertComponent from './ScoreAlert'
 import { Grid, Row, Col } from 'react-bootstrap'
 import './ScoreBoard.css'
-import ScoreAlertComponent from "./ScoreAlert";
-import {connect} from "react-redux";
 
 class ScoreBoard extends Component {
 

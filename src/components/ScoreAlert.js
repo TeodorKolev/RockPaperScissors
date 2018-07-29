@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { clearToggles, setChoice, setCycle } from '../actions/gameActions'
+import { CLEAR_TOGGLES } from '../utils/constants'
+import { FADE_DELAY, VICTORY_SCORE } from '../utils/gameSettings'
 import './ScoreAlert.css'
-import {connect} from "react-redux";
-import {CLEAR_TOGGLES} from "../utils/constants";
-import * as GameSettings from "../utils/gameSettings";
-import {clearToggles, setChoice, setCycle} from "../actions/gameActions";
-import {VICTORY_SCORE} from "../utils/gameSettings";
 
 class ScoreAlert extends Component {
 
@@ -12,14 +11,14 @@ class ScoreAlert extends Component {
     if (nextProps.userScore !== this.props.userScore ||
       nextProps.drawScore !== this.props.drawScore ||
       nextProps.computerScore !== this.props.computerScore) {
-      this.togglesClear();
+      this.togglesClear()
     }
   }
 
   togglesClear() {
     setTimeout(function () {
       this.props.clearToggles(CLEAR_TOGGLES)
-    }.bind(this), GameSettings.FADE_DELAY);
+    }.bind(this), FADE_DELAY)
   }
 
   render() {
@@ -51,7 +50,7 @@ const mapStateToProps = (state) => {
     userScore: state.userScore,
     computerScore: state.computerScore,
     drawScore: state.drawScore
-  };
+  }
 }
 
 const mapDispatchToProps = dispatch => {
