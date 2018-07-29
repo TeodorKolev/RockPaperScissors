@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './ScoreAlertComponent.css'
 import {connect} from "react-redux";
-import {TOGGLE_COMPUTER_SCORE, TOGGLE_DRAW_SCORE, TOGGLE_OVER, TOGGLE_USER_SCORE} from "../utils/constants";
+import {TOGGLE_COMPUTER_SCORE, TOGGLE_DRAW_SCORE, TOGGLE_USER_SCORE} from "../utils/constants";
 import * as GameSettings from "../utils/gameSettings";
 import {setChoice, setCycle, setToggle} from "../actions/gameActions";
 

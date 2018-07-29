@@ -2,9 +2,7 @@ import React, {Component} from 'react'
 import * as Constants from '../utils/constants';
 import {connect} from 'react-redux';
 import { Row, Col } from 'react-bootstrap'
-import {
-  setScore
-} from '../actions/gameActions';
+import { setScore } from '../actions/gameActions';
 import './SetScoreComponent.css';
 import {DRAW_SCORE} from "../utils/constants";
 import {USER_SCORE} from "../utils/constants";
