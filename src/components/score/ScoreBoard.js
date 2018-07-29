@@ -4,8 +4,14 @@ import ScoreAlertComponent from './ScoreAlert'
 import { Grid, Row, Col } from 'react-bootstrap'
 import './ScoreBoard.css'
 
-const images = require.context('../assets/img/', true);
+const images = require.context('../../assets/img/', true);
 
+/**
+ * Shows images of user and computer made choices.
+ * @param props
+ * @returns {*}
+ * @constructor
+ */
 const ScoreBoard = props => {
 
   return (

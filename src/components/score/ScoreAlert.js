@@ -1,12 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { clearToggles, setChoice, setCycle } from '../actions/gameActions'
-import { CLEAR_TOGGLES } from '../utils/constants'
-import { FADE_DELAY, VICTORY_SCORE } from '../utils/gameSettings'
+import { clearToggles, setChoice, setCycle } from '../../actions/gameActions'
+import { CLEAR_TOGGLES } from '../../utils/constants'
+import { FADE_DELAY, VICTORY_SCORE } from '../../utils/gameSettings'
 import './ScoreAlert.css'
 
+/**
+ * Show and hide game round result alerts.
+ */
 class ScoreAlert extends Component {
 
+  /**
+   * Calls toggleClear method on newly received score event.
+   * @param nextProps
+   */
   componentWillUpdate(nextProps) {
     if (nextProps.userScore !== this.props.userScore ||
       nextProps.drawScore !== this.props.drawScore ||
@@ -15,6 +22,9 @@ class ScoreAlert extends Component {
     }
   }
 
+  /**
+   * Clear winner alert after certain amount of time.
+   */
   togglesClear() {
     setTimeout(() => {
       this.props.clearToggles(CLEAR_TOGGLES)

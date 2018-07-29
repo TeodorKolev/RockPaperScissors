@@ -1,10 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setCycle } from '../actions/gameActions'
-import { START } from '../utils/constants'
+import { setCycle } from '../../actions/gameActions'
+import { START } from '../../utils/constants'
 import { Button, Grid, Row, Col } from 'react-bootstrap'
 import './Start.css'
 
+/**
+ * Show starting screen.
+ * @param props
+ * @returns {*}
+ * @constructor
+ */
 const Start = props => {
 
   return(

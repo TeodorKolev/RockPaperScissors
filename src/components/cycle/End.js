@@ -1,11 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setCycle } from '../actions/gameActions'
-import { RESTART, START } from '../utils/constants'
-import { VICTORY_SCORE } from '../utils/gameSettings'
+import { setCycle } from '../../actions/gameActions'
+import { RESTART, START } from '../../utils/constants'
+import { VICTORY_SCORE } from '../../utils/gameSettings'
 import { Button, Grid, Row, Col } from 'react-bootstrap'
 import './End.css'
 
+/**
+ * Show ending game screen.
+ * @param props
+ * @returns {*}
+ * @constructor
+ */
 const End = props => {
 
   return (

@@ -1,17 +1,21 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setCycle } from '../actions/gameActions'
-import ScoreBoard from './ScoreBoard'
-import ActionUser from './ActionUser'
-import Start from './Start'
-import End from './End'
+import ScoreBoard from './score/ScoreBoard'
+import ActionUser from './actions/ActionUser'
+import Start from './cycle/Start'
+import End from './cycle/End'
 import * as GameSettings from '../utils/gameSettings'
 import { END } from '../utils/constants'
-import ActionComputer from './ActionComputer'
-import SetScore from './SetScore'
+import ActionComputer from './actions/ActionComputer'
+import SetScore from './score/SetScore'
 
 class Main extends Component {
 
+  /**
+   * End game if user score or computer score reach max limit.
+   * @param nextProps
+   */
   componentWillUpdate(nextProps) {
     if (nextProps.userScore === GameSettings.VICTORY_SCORE || nextProps.computerScore === GameSettings.VICTORY_SCORE) {
       this.props.setCycle(END, true)

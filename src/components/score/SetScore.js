@@ -1,21 +1,34 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setScore } from '../actions/gameActions'
-import { DRAW_SCORE, PAPER, ROCK, SCISSORS } from '../utils/constants'
-import { USER_SCORE } from '../utils/constants'
-import { COMPUTER_SCORE } from '../utils/constants'
-import { DEFAULT_ROUND } from '../utils/gameSettings'
+import { setScore } from '../../actions/gameActions'
+import { DRAW_SCORE, PAPER, ROCK, SCISSORS } from '../../utils/constants'
+import { USER_SCORE } from '../../utils/constants'
+import { COMPUTER_SCORE } from '../../utils/constants'
+import { DEFAULT_ROUND } from '../../utils/gameSettings'
 import { Row, Col } from 'react-bootstrap'
 import './SetScore.css'
 
+/**
+ * Manages and shows scores.
+ */
 class SetScore extends Component {
 
+  /**
+   * Automatically call setScore method on every new computer round.
+   * @param nextProps
+   */
   componentWillUpdate(nextProps) {
     if (nextProps.computerRound !== DEFAULT_ROUND && nextProps.computerRound !== this.props.computerRound) {
       this.setScore(nextProps.userChoice, nextProps.computerChoice)
     }
   }
 
+  /**
+   * Determine who will win game round based on player and computer choices.
+   * @param userChoice
+   * @param computerChoice
+   * @returns {*|{type}|void}
+   */
   setScore(userChoice, computerChoice) {
     if (userChoice === computerChoice) {
       return this.props.setScore(DRAW_SCORE)

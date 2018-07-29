@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setChoice } from '../actions/gameActions'
-import { PAPER, ROCK, SCISSORS, USER_CHOICE } from '../utils/constants'
+import { setChoice } from '../../actions/gameActions'
+import { PAPER, ROCK, SCISSORS, USER_CHOICE } from '../../utils/constants'
 import { Grid, Row, Col } from 'react-bootstrap'
 import './ActionComponent.css'
 
-const images = require.context('../assets/img/', true)
+const images = require.context('../../assets/img/', true)
 
+/**
+ * Manages user interactions.
+ */
 class ActionUser extends Component {
 
   render() {
