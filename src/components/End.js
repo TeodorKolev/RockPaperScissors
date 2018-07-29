@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { setCycle } from '../actions/gameActions'
+import { RESTART, START } from '../utils/constants'
+import { VICTORY_SCORE } from '../utils/gameSettings'
 import { Button, Grid, Row, Col } from 'react-bootstrap'
-import * as GameSettings from '../utils/gameSettings'
 import './End.css'
-import { setCycle} from "../actions/gameActions";
-import {connect} from "react-redux";
-import {RESTART, START} from "../utils/constants";
 
 class End extends Component {
 
@@ -12,7 +12,7 @@ class End extends Component {
     return (
       <Grid>
         <Row className="show-grid">
-          {this.props.userScore === GameSettings.VICTORY_SCORE ?
+          {this.props.userScore === VICTORY_SCORE ?
             <Col mdOffset={4} md={4}>
               <div className='game-over-holder'>You won!</div>
             </Col>
