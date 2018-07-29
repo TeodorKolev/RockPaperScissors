@@ -1,44 +1,52 @@
 html, body, #root {
-  min-height: 100% !important;
-  height: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
+    min-height: 100% !important;
+    height: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  color: #777777 !important;
-  background: url(./assets/img/bg.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    color: #777777 !important;
+    background: url(./assets/img/bg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }
+
 .fade {
-  -webkit-transition: opacity 0.2s ease-in;
-  -moz-transition: opacity 0.2s ease-in;
-  -o-transition: opacity 0.2s ease-in;
+    -webkit-transition: opacity 0.2s ease-in;
+    -moz-transition: opacity 0.2s ease-in;
+    -o-transition: opacity 0.2s ease-in;
 }
+
 .fade.hided {
-  opacity: 0;
+    opacity: 0;
 }
+
 .fade.shown {
-  opacity: 1;
+    opacity: 1;
 }
+
 .pusher {
-  padding-bottom: 20px;
+    padding-bottom: 20px;
 }
+
 button:focus {
-  outline: 0 !important;
+    outline: 0 !important;
 }
+
 .btn-success {
-	border-radius: 0px !important;
+    padding: 10px 36px !important;
+    border-radius: 4px !important;
     background: #39425a !important;
     border-color: #39425a !important;
 }
