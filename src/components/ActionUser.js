@@ -5,10 +5,11 @@ import { PAPER, ROCK, SCISSORS, USER_CHOICE } from '../utils/constants'
 import { Grid, Row, Col } from 'react-bootstrap'
 import './ActionComponent.css'
 
+const images = require.context('../assets/img/', true)
+
 class ActionUser extends Component {
 
   render() {
-    let images = require.context('../assets/img/', true)
     const choices = [ROCK, PAPER, SCISSORS]
     return (
       <Grid className={`fade ${this.props.loadingState ? 'hided' : 'shown'}`}>
@@ -40,10 +41,6 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    setChoice: (type, choice) => { dispatch(setChoice(type, choice)) }
-  }
-}
+const mapDispatchToProps = { setChoice }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ActionUser)

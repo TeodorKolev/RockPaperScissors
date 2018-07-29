@@ -12,7 +12,7 @@ import SetScore from './SetScore'
 
 class Main extends Component {
 
-  componentWillReceiveProps(nextProps) {
+  componentWillUpdate(nextProps) {
     if (nextProps.userScore === GameSettings.VICTORY_SCORE || nextProps.computerScore === GameSettings.VICTORY_SCORE) {
       this.props.setCycle(END, true)
     }
@@ -49,12 +49,6 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    setCycle: (type, value) => {
-      dispatch(setCycle(type, value))
-    }
-  }
-}
+const mapDispatchToProps = { setCycle }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main)

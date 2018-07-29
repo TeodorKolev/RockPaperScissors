@@ -4,10 +4,11 @@ import ScoreAlertComponent from './ScoreAlert'
 import { Grid, Row, Col } from 'react-bootstrap'
 import './ScoreBoard.css'
 
+const images = require.context('../assets/img/', true);
+
 class ScoreBoard extends Component {
 
   render() {
-    let images = require.context('../assets/img/', true);
     return(
       <div className='score-board-holder'>
         <Grid>

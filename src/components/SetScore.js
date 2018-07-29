@@ -10,7 +10,7 @@ import './SetScore.css'
 
 class SetScore extends Component {
 
-  componentWillReceiveProps(nextProps) {
+  componentWillUpdate(nextProps) {
     if (nextProps.computerRound !== DEFAULT_ROUND && nextProps.computerRound !== this.props.computerRound) {
       this.setScore(nextProps.userChoice, nextProps.computerChoice)
     }
@@ -65,11 +65,6 @@ const mapStateToProps = state => {
   }
 }
 
-
-const mapDispatchToProps = dispatch => {
-  return {
-    setScore: (choice) => { dispatch(setScore(choice)) }
-  }
-}
+const mapDispatchToProps = { setScore }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SetScore)

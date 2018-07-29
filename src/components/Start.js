@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setCycle } from '../actions/gameActions'
 import { START } from '../utils/constants'
-import { Button, Grid, Row, Col  } from 'react-bootstrap'
+import { Button, Grid, Row, Col } from 'react-bootstrap'
 import './Start.css'
 
 class Start extends Component {
@@ -24,10 +24,6 @@ class Start extends Component {
 
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    setCycle: (type, value) => { dispatch(setCycle(type, value)) }
-  }
-}
+const mapDispatchToProps = { setCycle }
 
 export default connect(null, mapDispatchToProps)(Start)

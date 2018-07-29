@@ -9,7 +9,7 @@ import './End.css'
 
 class ActionComputer extends Component {
 
-  componentWillReceiveProps(nextProps) {
+  componentWillUpdate(nextProps) {
     if (nextProps.userRound !== DEFAULT_ROUND && nextProps.userRound !== this.props.userRound) {
       this.setComputerChoice()
     }
@@ -49,12 +49,6 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    setCycle: (type, value) => { dispatch(setCycle(type, value)) },
-    setChoice: (type, choice) => { dispatch(setChoice(type, choice)) },
-    clearToggles: (type) => { dispatch(clearToggles(type)) }
-  }
-}
+const mapDispatchToProps = { setCycle, setChoice, clearToggles }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ActionComputer)

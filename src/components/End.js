@@ -41,10 +41,6 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    setCycle: (type, value) => { dispatch(setCycle(type, value)) }
-  }
-}
+const mapDispatchToProps = { setCycle }
 
 export default connect(mapStateToProps, mapDispatchToProps)(End)

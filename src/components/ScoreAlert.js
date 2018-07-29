@@ -7,7 +7,7 @@ import './ScoreAlert.css'
 
 class ScoreAlert extends Component {
 
-  componentWillReceiveProps(nextProps) {
+  componentWillUpdate(nextProps) {
     if (nextProps.userScore !== this.props.userScore ||
       nextProps.drawScore !== this.props.drawScore ||
       nextProps.computerScore !== this.props.computerScore) {
@@ -53,12 +53,6 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    setChoice: (type, choice) => { dispatch(setChoice(type, choice)) },
-    setCycle: (type, value) => { dispatch(setCycle(type, value)) },
-    clearToggles: (type) => { dispatch(clearToggles(type)) }
-  }
-}
+const mapDispatchToProps = { setChoice, setCycle, clearToggles }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ScoreAlert)
