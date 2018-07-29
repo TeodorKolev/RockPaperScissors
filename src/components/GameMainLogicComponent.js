@@ -9,7 +9,6 @@ import * as Constants from '../utils/constants'
 import * as GameSettings from '../utils/gameSettings'
 import SetScoreComponent from './SetScoreComponent';
 import {COMPUTER_CHOICE} from "../utils/constants";
-import {RESTART} from "../utils/constants";
 import {TOGGLE_USER_SCORE} from "../utils/constants";
 import {TOGGLE_COMPUTER_SCORE} from "../utils/constants";
 import {TOGGLE_DRAW_SCORE} from "../utils/constants";
@@ -19,7 +18,6 @@ import {LOADING} from "../utils/constants";
 class GameMainLogicComponent extends Component {
   constructor(props) {
     super(props);
-    this.restartGame = this.restartGame.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -46,10 +44,6 @@ class GameMainLogicComponent extends Component {
     setTimeout(function () {
       this.props.setToggle(type, false)
     }.bind(this), GameSettings.FADE_DELAY);
-  }
-
-  restartGame() {
-    this.props.setCycle(RESTART, true)
   }
 
   hideScoreAlert() {
@@ -87,10 +81,7 @@ class GameMainLogicComponent extends Component {
             />
             <ScoreBoardComponent />
             {this.props.toggleOver ?
-              <EndScreenComponent
-                userScore={this.props.userScore}
-                restartGame={this.restartGame}
-              />
+              <EndScreenComponent/>
               :
               <ActionsComponent />
               }

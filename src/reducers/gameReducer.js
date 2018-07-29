@@ -67,8 +67,6 @@ const game = (state = initialState, action) => {
       return Object.assign({}, state, {
         loadingState: action.value,
       })
-    case RESTART:
-      return initialState
     case TOGGLE_USER_SCORE:
       return Object.assign({}, state, {
         toggleUserScore: action.value,
@@ -85,6 +83,8 @@ const game = (state = initialState, action) => {
       return Object.assign({}, state, {
         toggleOver: action.value,
       })
+    case RESTART:
+      return initialState
     default:
       return state
   }
