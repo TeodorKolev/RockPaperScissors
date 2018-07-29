@@ -36,10 +36,16 @@ class ActionsComponent extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    loadingState: state.loadingState
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     setChoice: (type, choice) => { dispatch(setChoice(type, choice)) },
   }
 }
 
-export default connect(null, mapDispatchToProps)(ActionsComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(ActionsComponent)

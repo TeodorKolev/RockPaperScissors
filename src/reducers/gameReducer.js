@@ -11,10 +11,10 @@ import {
 import {
   DEFAULT_COMPUTER_CHOICE,
   DEFAULT_COMPUTER_SCORE,
-  DEFAULT_DRAW_SCORE,
+  DEFAULT_DRAW_SCORE, DEFAULT_LOADING_STATE,
   DEFAULT_ROUND,
   DEFAULT_TOGGLE_COMPUTER_SCORE,
-  DEFAULT_TOGGLE_DRAW_SCORE,
+  DEFAULT_TOGGLE_DRAW_SCORE, DEFAULT_TOGGLE_OVER,
   DEFAULT_TOGGLE_USER_SCORE,
   DEFAULT_USER_CHOICE,
   DEFAULT_USER_SCORE,
@@ -31,7 +31,9 @@ const initialState = {
   round: DEFAULT_ROUND,
   toggleUserScore: DEFAULT_TOGGLE_USER_SCORE,
   toggleComputerScore: DEFAULT_TOGGLE_COMPUTER_SCORE,
-  toggleDrawScore: DEFAULT_TOGGLE_DRAW_SCORE
+  toggleDrawScore: DEFAULT_TOGGLE_DRAW_SCORE,
+  toggleOver: DEFAULT_TOGGLE_OVER,
+  loadingState: DEFAULT_LOADING_STATE
 }
 
 const game = (state = initialState, action) => {
@@ -62,7 +64,9 @@ const game = (state = initialState, action) => {
         gameStartedState: state,
       })
     case LOADING:
-      return initialState
+      return Object.assign({}, state, {
+        loadingState: action.value,
+      })
     case RESTART:
       return initialState
     case TOGGLE_USER_SCORE:
@@ -78,7 +82,9 @@ const game = (state = initialState, action) => {
         toggleDrawScore: action.value,
       })
     case TOGGLE_OVER:
-      return initialState
+      return Object.assign({}, state, {
+        toggleOver: action.value,
+      })
     default:
       return state
   }

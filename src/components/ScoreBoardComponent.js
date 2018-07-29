@@ -1,41 +1,58 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
 import './ScoreBoardComponent.css'
 import ScoreAlertComponent from "./ScoreAlertComponent";
+import {connect} from "react-redux";
 
-function ScoreBoardComponent(props) {
-  let images = require.context('../assets/img/', true);
-  return(
-    <div className='score-board-holder'>
-      <Grid>
-        <Row className="show-grid pusher">
-          <Col xsOffset={0} xs={3} mdOffset={2} md={2}>
-            {props.userChoice ?
-              <img src={images(`./${props.userChoice}.png`)} alt={props.userChoice} />
-              :
-              null
-            }
-          </Col>
-          <Col xs={6} md={4}>
-            <ScoreAlertComponent />
-          </Col>
-          {!props.loadingState ?
-            <Col xs={3} md={2}>
-              {props.computerChoice ?
-                <img src={images(`./${props.computerChoice}.png`)} alt={props.computerChoice}/>
+class ScoreBoardComponent extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    let images = require.context('../assets/img/', true);
+    return(
+      <div className='score-board-holder'>
+        <Grid>
+          <Row className="show-grid pusher">
+            <Col xsOffset={0} xs={3} mdOffset={2} md={2}>
+              {this.props.userChoice ?
+                <img src={images(`./${this.props.userChoice}.png`)} alt={this.props.userChoice} />
                 :
                 null
               }
             </Col>
-            :
-            <Col xs={3} mdOffset={4} md={2}>
-              <p className='loading'>Loading...</p>
+            <Col xs={6} md={4}>
+              <ScoreAlertComponent />
             </Col>
-          }
-        </Row>
-      </Grid>
-    </div>
-  )
+            {!this.props.loadingState ?
+              <Col xs={3} md={2}>
+                {this.props.computerChoice ?
+                  <img src={images(`./${this.props.computerChoice}.png`)} alt={this.props.computerChoice}/>
+                  :
+                  null
+                }
+              </Col>
+              :
+              <Col xs={3} mdOffset={4} md={2}>
+                <p className='loading'>Loading...</p>
+              </Col>
+            }
+          </Row>
+        </Grid>
+      </div>
+    )
+  }
+
 }
 
-export default ScoreBoardComponent
+const mapStateToProps = state => {
+  return {
+    userChoice: state.userChoice,
+    computerChoice: state.computerChoice,
+    loadingState: state.loadingState
+  }
+}
+
+export default connect(mapStateToProps, null)(ScoreBoardComponent)

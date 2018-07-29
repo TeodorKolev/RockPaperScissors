@@ -10,3 +10,5 @@ export const GAME_STARTED_STATE = false
 export const DEFAULT_TOGGLE_USER_SCORE = false
 export const DEFAULT_TOGGLE_COMPUTER_SCORE = false
 export const DEFAULT_TOGGLE_DRAW_SCORE = false
+export const DEFAULT_TOGGLE_OVER = false
+export const DEFAULT_LOADING_STATE = false

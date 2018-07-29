@@ -13,17 +13,13 @@ import {RESTART} from "../utils/constants";
 import {TOGGLE_USER_SCORE} from "../utils/constants";
 import {TOGGLE_COMPUTER_SCORE} from "../utils/constants";
 import {TOGGLE_DRAW_SCORE} from "../utils/constants";
-
-const initialState = {
-  loadingState: false,
-  toggleOver: false,
-};
+import {TOGGLE_OVER} from "../utils/constants";
+import {LOADING} from "../utils/constants";
 
 class GameMainLogicComponent extends Component {
   constructor(props) {
     super(props);
     this.restartGame = this.restartGame.bind(this)
-    this.state = initialState;
   }
 
   componentWillReceiveProps(nextProps) {
@@ -32,7 +28,7 @@ class GameMainLogicComponent extends Component {
     }
     if (nextProps.userScore > 0 || nextProps.computerScore > 0 || nextProps.drawScore > 0) {
       if (nextProps.userScore === GameSettings.VICTORY_SCORE || nextProps.computerScore === GameSettings.VICTORY_SCORE) {
-        this.setState({toggleOver: true});
+        this.props.setToggle(TOGGLE_OVER, true)
       } else {
         if (nextProps.userScore !== this.props.userScore) {
           this.toggleResult(TOGGLE_USER_SCORE)
@@ -53,8 +49,7 @@ class GameMainLogicComponent extends Component {
   }
 
   restartGame() {
-    this.props.setCycle(RESTART)
-    this.setState(initialState);
+    this.props.setCycle(RESTART, true)
   }
 
   hideScoreAlert() {
@@ -63,15 +58,9 @@ class GameMainLogicComponent extends Component {
     this.props.setToggle(TOGGLE_DRAW_SCORE, false)
   }
 
-  setLoadingState(currentState) {
-    this.setState({
-      loadingState: currentState
-    })
-  }
-
   setComputerChoice() {
     this.hideScoreAlert()
-    this.setLoadingState(true)
+    this.props.setCycle(LOADING, true)
     setTimeout(function() {
       let computerChoice = Math.random();
       if (computerChoice < 0.34) {
@@ -82,7 +71,7 @@ class GameMainLogicComponent extends Component {
         this.props.setChoice(COMPUTER_CHOICE, Constants.SCISSORS)
       }
       this.setScoreRef.setScore(this.props.userChoice, this.props.computerChoice);
-      this.setLoadingState(false)
+      this.props.setCycle(LOADING, false)
     }.bind(this), GameSettings.FADE_DELAY);
   }
 
@@ -96,20 +85,14 @@ class GameMainLogicComponent extends Component {
             <SetScoreComponent
               onRef={ref => (this.setScoreRef = ref)}
             />
-            <ScoreBoardComponent
-              userChoice={this.props.userChoice}
-              computerChoice={this.props.computerChoice}
-              loadingState={this.state.loadingState}
-            />
-            {this.state.toggleOver ?
+            <ScoreBoardComponent />
+            {this.props.toggleOver ?
               <EndScreenComponent
                 userScore={this.props.userScore}
                 restartGame={this.restartGame}
               />
               :
-              <ActionsComponent
-                loadingState={this.state.loadingState}
-              />
+              <ActionsComponent />
               }
           </div>
         }
@@ -127,14 +110,15 @@ const mapStateToProps = state => {
     computerScore: state.computerScore,
     drawScore: state.drawScore,
     toggleDrawScore: state.toggleDrawScore,
-    round: state.round
+    round: state.round,
+    toggleOver: state.toggleOver
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     setChoice: (type, choice) => { dispatch(setChoice(type, choice)) },
-    setCycle: (type) => { dispatch(setCycle(type)) },
+    setCycle: (type, value) => { dispatch(setCycle(type, value)) },
     setToggle: (type, value) => { dispatch(setToggle(type, value)) }
   }
 }
