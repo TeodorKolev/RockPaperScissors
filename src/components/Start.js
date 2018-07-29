@@ -1,27 +1,24 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { setCycle } from '../actions/gameActions'
 import { START } from '../utils/constants'
 import { Button, Grid, Row, Col } from 'react-bootstrap'
 import './Start.css'
 
-class Start extends Component {
+const Start = props => {
 
-  render() {
-    return(
-      <Grid>
-        <Row className="show-grid">
-          <Col mdOffset={4} md={4}>
-            <h4>Welcome to <b>Rock / Paper / Scissors</b> Challenge!</h4>
-            <p>
-              <Button bsSize="large" bsStyle="success" onClick={() => this.props.setCycle(START, true)}>Play</Button>
-            </p>
-          </Col>
-        </Row>
-      </Grid>
-    )
-  }
-
+  return(
+    <Grid>
+      <Row className="show-grid">
+        <Col mdOffset={4} md={4}>
+          <h4>Welcome to <b>Rock / Paper / Scissors</b> Challenge!</h4>
+          <p>
+            <Button bsSize="large" bsStyle="success" onClick={() => props.setCycle(START, true)}>Play</Button>
+          </p>
+        </Col>
+      </Row>
+    </Grid>
+  )
 }
 
 const mapDispatchToProps = { setCycle }
