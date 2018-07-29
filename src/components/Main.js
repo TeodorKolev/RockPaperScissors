@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {setCycle} from '../actions/gameActions'
-import ScoreBoardComponent from './ScoreBoard'
-import ActionsComponent from './ActionUser'
-import StartScreenComponent from './Start'
-import EndScreenComponent from './End'
+import ScoreBoard from './ScoreBoard'
+import ActionUser from './ActionUser'
+import Start from './Start'
+import End from './End'
 import * as GameSettings from '../utils/gameSettings'
 import {END} from "../utils/constants";
 import ActionComputer from "./ActionComputer";
-import SetScoreComponent from "./SetScore";
+import SetScore from "./SetScore";
 
 class Main extends Component {
 
@@ -23,16 +23,16 @@ class Main extends Component {
     return (
       <div>
         {!this.props.gameStartedState ?
-          <StartScreenComponent />
+          <Start />
           :
           <div>
             <ActionComputer />
-            <SetScoreComponent />
-            <ScoreBoardComponent />
+            <SetScore />
+            <ScoreBoard />
             {this.props.gameEndedState ?
-              <EndScreenComponent/>
+              <End/>
               :
-              <ActionsComponent />
+              <ActionUser />
               }
           </div>
         }
