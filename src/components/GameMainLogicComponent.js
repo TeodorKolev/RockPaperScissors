@@ -27,23 +27,8 @@ class GameMainLogicComponent extends Component {
     if (nextProps.userScore > 0 || nextProps.computerScore > 0 || nextProps.drawScore > 0) {
       if (nextProps.userScore === GameSettings.VICTORY_SCORE || nextProps.computerScore === GameSettings.VICTORY_SCORE) {
         this.props.setToggle(TOGGLE_OVER, true)
-      } else {
-        if (nextProps.userScore !== this.props.userScore) {
-          this.toggleResult(TOGGLE_USER_SCORE)
-        } else if (nextProps.computerScore !== this.props.computerScore) {
-          this.toggleResult(TOGGLE_COMPUTER_SCORE)
-        } else if (nextProps.drawScore !== this.props.drawScore) {
-          this.toggleResult(TOGGLE_DRAW_SCORE)
-        }
       }
     }
-  }
-
-  toggleResult(type) {
-    this.props.setToggle(type, true)
-    setTimeout(function () {
-      this.props.setToggle(type, false)
-    }.bind(this), GameSettings.FADE_DELAY);
   }
 
   hideScoreAlert() {
