@@ -8,6 +8,7 @@ import EndScreenComponent from './EndScreenComponent'
 import * as GameSettings from '../utils/gameSettings'
 import {TOGGLE_OVER} from "../utils/constants";
 import ActionComputer from "./ActionComputer";
+import SetScoreComponent from "./SetScoreComponent";
 
 class GameMainLogicComponent extends Component {
 
@@ -25,6 +26,7 @@ class GameMainLogicComponent extends Component {
           :
           <div>
             <ActionComputer />
+            <SetScoreComponent />
             <ScoreBoardComponent />
             {this.props.toggleOver ?
               <EndScreenComponent/>

@@ -9,15 +9,14 @@ import './SetScoreComponent.css';
 import {DRAW_SCORE} from "../utils/constants";
 import {USER_SCORE} from "../utils/constants";
 import {COMPUTER_SCORE} from "../utils/constants";
+import {DEFAULT_ROUND} from "../utils/gameSettings";
 
 class SetScoreComponent extends Component {
 
-  componentDidMount() {
-    this.props.onRef(this);
-  }
-
-  componentWillUnmount() {
-    this.props.onRef(undefined);
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.computerRound !== DEFAULT_ROUND && nextProps.computerRound !== this.props.computerRound) {
+      this.setScore(nextProps.userChoice, nextProps.computerChoice);
+    }
   }
 
   setScore(userChoice, computerChoice) {
@@ -63,13 +62,16 @@ const mapStateToProps = (state) => {
   return {
     userScore: state.userScore,
     computerScore: state.computerScore,
+    computerRound: state.computerRound,
+    userChoice: state.userChoice,
+    computerChoice: state.computerChoice
   };
 }
 
 
 const mapDispatchToProps = dispatch => {
   return {
-    setScore: (choice) => { dispatch(setScore(choice)) },
+    setScore: (choice) => { dispatch(setScore(choice)) }
   }
 }
 

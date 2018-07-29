@@ -28,7 +28,8 @@ const initialState = {
   drawScore: DEFAULT_DRAW_SCORE,
   userChoice: DEFAULT_USER_CHOICE,
   computerChoice: DEFAULT_COMPUTER_CHOICE,
-  round: DEFAULT_ROUND,
+  userRound: DEFAULT_ROUND,
+  computerRound: DEFAULT_ROUND,
   toggleUserScore: DEFAULT_TOGGLE_USER_SCORE,
   toggleComputerScore: DEFAULT_TOGGLE_COMPUTER_SCORE,
   toggleDrawScore: DEFAULT_TOGGLE_DRAW_SCORE,
@@ -41,11 +42,12 @@ const game = (state = initialState, action) => {
     case USER_CHOICE:
       return Object.assign({}, state, {
         userChoice: action.choice,
-        round: state.round + 1
+        userRound: state.userRound + 1
       })
     case COMPUTER_CHOICE:
       return Object.assign({}, state, {
         computerChoice: action.choice,
+        computerRound: state.computerRound + 1
       })
     case USER_SCORE:
       return Object.assign({}, state, {

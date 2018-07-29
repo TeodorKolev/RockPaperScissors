@@ -10,12 +10,12 @@ import {
   TOGGLE_USER_SCORE
 } from "../utils/constants";
 import * as Constants from "../utils/constants";
-import SetScoreComponent from "./SetScoreComponent";
+import {DEFAULT_ROUND} from "../utils/gameSettings";
 
 class ActionComputer extends Component {
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.round !== 0 && nextProps.round !== this.props.round) {
+    if (nextProps.userRound !== DEFAULT_ROUND && nextProps.userRound !== this.props.userRound) {
       this.setComputerChoice();
     }
   }
@@ -32,7 +32,6 @@ class ActionComputer extends Component {
       } else {
         this.props.setChoice(COMPUTER_CHOICE, Constants.SCISSORS)
       }
-      this.setScoreRef.setScore(this.props.userChoice, this.props.computerChoice);
       this.props.setCycle(LOADING, false)
     }.bind(this), GameSettings.FADE_DELAY);
   }
@@ -44,11 +43,7 @@ class ActionComputer extends Component {
   }
 
   render() {
-    return (
-      <SetScoreComponent
-        onRef={ref => (this.setScoreRef = ref)}
-      />
-    );
+    return false
   }
 
 }
@@ -56,7 +51,7 @@ class ActionComputer extends Component {
 const mapStateToProps = state => {
   return {
     userScore: state.userScore,
-    round: state.round,
+    userRound: state.userRound,
     userChoice: state.userChoice,
     computerChoice: state.computerChoice
   }
