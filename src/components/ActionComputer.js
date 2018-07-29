@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import * as GameSettings from '../utils/gameSettings'
-import './EndScreenComponent.css'
+import './End.css'
 import {clearToggles, setChoice, setCycle} from "../actions/gameActions";
 import {connect} from "react-redux";
 import {

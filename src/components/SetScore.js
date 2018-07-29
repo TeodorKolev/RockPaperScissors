@@ -5,13 +5,13 @@ import { Row, Col } from 'react-bootstrap'
 import {
   setScore
 } from '../actions/gameActions';
-import './SetScoreComponent.css';
+import './SetScore.css';
 import {DRAW_SCORE} from "../utils/constants";
 import {USER_SCORE} from "../utils/constants";
 import {COMPUTER_SCORE} from "../utils/constants";
 import {DEFAULT_ROUND} from "../utils/gameSettings";
 
-class SetScoreComponent extends Component {
+class SetScore extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.computerRound !== DEFAULT_ROUND && nextProps.computerRound !== this.props.computerRound) {
@@ -75,4 +75,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SetScoreComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(SetScore)

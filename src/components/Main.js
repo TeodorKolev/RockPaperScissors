@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {setCycle} from '../actions/gameActions'
-import ScoreBoardComponent from './ScoreBoardComponent'
-import ActionsComponent from './ActionsComponent'
-import StartScreenComponent from './StartScreenComponent'
-import EndScreenComponent from './EndScreenComponent'
+import ScoreBoardComponent from './ScoreBoard'
+import ActionsComponent from './ActionUser'
+import StartScreenComponent from './Start'
+import EndScreenComponent from './End'
 import * as GameSettings from '../utils/gameSettings'
 import {END} from "../utils/constants";
 import ActionComputer from "./ActionComputer";
-import SetScoreComponent from "./SetScoreComponent";
+import SetScoreComponent from "./SetScore";
 
-class GameMainLogicComponent extends Component {
+class Main extends Component {
 
   componentWillReceiveProps(nextProps) {
     if ((nextProps.userScore !== this.props.userScore || nextProps.computerScore !== this.props.computerScore) &&
@@ -56,4 +56,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(GameMainLogicComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(Main)

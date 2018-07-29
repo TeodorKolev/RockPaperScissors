@@ -6,7 +6,7 @@ import {USER_CHOICE} from "../utils/constants";
 import {setChoice} from "../actions/gameActions";
 import {connect} from "react-redux";
 
-class ActionsComponent extends Component {
+class ActionUser extends Component {
 
   render() {
     let images = require.context('../assets/img/', true)
@@ -44,4 +44,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ActionsComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(ActionUser)

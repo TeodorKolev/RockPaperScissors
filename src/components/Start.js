@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import { Button, Grid, Row, Col  } from 'react-bootstrap'
-import './StartScreenComponent.css'
+import './Start.css'
 import {connect} from "react-redux";
 import {setCycle} from "../actions/gameActions";
 import {START} from "../utils/constants";
 
-class StartScreenComponent extends Component {
+class Start extends Component {
 
   render() {
     return(
@@ -30,4 +30,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(StartScreenComponent)
+export default connect(null, mapDispatchToProps)(Start)

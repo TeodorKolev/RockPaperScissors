@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
-import './ScoreBoardComponent.css'
-import ScoreAlertComponent from "./ScoreAlertComponent";
+import './ScoreBoard.css'
+import ScoreAlertComponent from "./ScoreAlert";
 import {connect} from "react-redux";
 
-class ScoreBoardComponent extends Component {
+class ScoreBoard extends Component {
 
   render() {
     let images = require.context('../assets/img/', true);
@@ -51,4 +51,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, null)(ScoreBoardComponent)
+export default connect(mapStateToProps, null)(ScoreBoard)

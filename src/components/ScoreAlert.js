@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import './ScoreAlertComponent.css'
+import './ScoreAlert.css'
 import {connect} from "react-redux";
 import {CLEAR_TOGGLES} from "../utils/constants";
 import * as GameSettings from "../utils/gameSettings";
 import {clearToggles, setChoice, setCycle} from "../actions/gameActions";
 
-class ScoreAlertComponent extends Component {
+class ScoreAlert extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.userScore !== this.props.userScore ||
@@ -57,4 +57,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ScoreAlertComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(ScoreAlert)

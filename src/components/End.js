@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { Button, Grid, Row, Col } from 'react-bootstrap'
 import * as GameSettings from '../utils/gameSettings'
-import './EndScreenComponent.css'
+import './End.css'
 import { setCycle} from "../actions/gameActions";
 import {connect} from "react-redux";
 import {RESTART} from "../utils/constants";
 
-class EndScreenComponent extends Component {
+class End extends Component {
 
   render() {
     return (
@@ -46,4 +46,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EndScreenComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(End)
