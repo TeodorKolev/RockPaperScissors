@@ -11,17 +11,16 @@ export const setScore = type => {
   }
 }
 
-export const setToggle = (type, value) => {
-  return {
-    type: type,
-    value: value
-  }
-}
-
 export const setCycle = (type, value) => {
   return {
     type: type,
     value: value,
+  }
+}
+
+export const clearToggles = (type) => {
+  return {
+    type: type
   }
 }
 

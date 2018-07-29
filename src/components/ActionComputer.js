@@ -1,13 +1,11 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import * as GameSettings from '../utils/gameSettings'
 import './EndScreenComponent.css'
-import {setChoice, setCycle, setToggle} from "../actions/gameActions";
+import {clearToggles, setChoice, setCycle} from "../actions/gameActions";
 import {connect} from "react-redux";
 import {
+  CLEAR_TOGGLES,
   COMPUTER_CHOICE, LOADING,
-  TOGGLE_COMPUTER_SCORE,
-  TOGGLE_DRAW_SCORE,
-  TOGGLE_USER_SCORE
 } from "../utils/constants";
 import * as Constants from "../utils/constants";
 import {DEFAULT_ROUND} from "../utils/gameSettings";
@@ -37,9 +35,7 @@ class ActionComputer extends Component {
   }
 
   hideScoreAlert() {
-    this.props.setToggle(TOGGLE_USER_SCORE, false)
-    this.props.setToggle(TOGGLE_COMPUTER_SCORE, false)
-    this.props.setToggle(TOGGLE_DRAW_SCORE, false)
+    this.props.clearToggles(CLEAR_TOGGLES)
   }
 
   render() {
@@ -61,7 +57,7 @@ const mapDispatchToProps = dispatch => {
   return {
     setCycle: (type, value) => { dispatch(setCycle(type, value)) },
     setChoice: (type, choice) => { dispatch(setChoice(type, choice)) },
-    setToggle: (type, value) => { dispatch(setToggle(type, value)) }
+    clearToggles: (type) => { dispatch(clearToggles(type)) }
   }
 }
 

@@ -1,26 +1,23 @@
 import React, { Component } from 'react'
 import './ScoreAlertComponent.css'
 import {connect} from "react-redux";
-import {TOGGLE_COMPUTER_SCORE, TOGGLE_DRAW_SCORE, TOGGLE_USER_SCORE} from "../utils/constants";
+import {CLEAR_TOGGLES} from "../utils/constants";
 import * as GameSettings from "../utils/gameSettings";
-import {setChoice, setCycle, setToggle} from "../actions/gameActions";
+import {clearToggles, setChoice, setCycle} from "../actions/gameActions";
 
 class ScoreAlertComponent extends Component {
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.userScore !== this.props.userScore) {
-      this.toggleResult(TOGGLE_USER_SCORE)
-    } else if (nextProps.computerScore !== this.props.computerScore) {
-      this.toggleResult(TOGGLE_COMPUTER_SCORE)
-    } else if (nextProps.drawScore !== this.props.drawScore) {
-      this.toggleResult(TOGGLE_DRAW_SCORE)
+    if (nextProps.userScore !== this.props.userScore ||
+      nextProps.drawScore !== this.props.drawScore ||
+      nextProps.computerScore !== this.props.computerScore) {
+      this.togglesClear();
     }
   }
 
-  toggleResult(type) {
-    this.props.setToggle(type, true)
+  togglesClear() {
     setTimeout(function () {
-      this.props.setToggle(type, false)
+      this.props.clearToggles(CLEAR_TOGGLES)
     }.bind(this), GameSettings.FADE_DELAY);
   }
 
@@ -56,7 +53,7 @@ const mapDispatchToProps = dispatch => {
   return {
     setChoice: (type, choice) => { dispatch(setChoice(type, choice)) },
     setCycle: (type, value) => { dispatch(setCycle(type, value)) },
-    setToggle: (type, value) => { dispatch(setToggle(type, value)) }
+    clearToggles: (type) => { dispatch(clearToggles(type)) }
   }
 }
 

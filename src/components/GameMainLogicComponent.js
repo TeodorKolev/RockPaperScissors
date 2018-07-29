@@ -1,20 +1,21 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setToggle } from '../actions/gameActions'
+import {setCycle} from '../actions/gameActions'
 import ScoreBoardComponent from './ScoreBoardComponent'
 import ActionsComponent from './ActionsComponent'
 import StartScreenComponent from './StartScreenComponent'
 import EndScreenComponent from './EndScreenComponent'
 import * as GameSettings from '../utils/gameSettings'
-import {TOGGLE_OVER} from "../utils/constants";
+import {END} from "../utils/constants";
 import ActionComputer from "./ActionComputer";
 import SetScoreComponent from "./SetScoreComponent";
 
 class GameMainLogicComponent extends Component {
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.userScore === GameSettings.VICTORY_SCORE || nextProps.computerScore === GameSettings.VICTORY_SCORE) {
-      this.props.setToggle(TOGGLE_OVER, true)
+    if ((nextProps.userScore !== this.props.userScore || nextProps.computerScore !== this.props.computerScore) &&
+      (nextProps.userScore === GameSettings.VICTORY_SCORE || nextProps.computerScore === GameSettings.VICTORY_SCORE)) {
+      this.props.setCycle(END, true)
     }
   }
 
@@ -28,7 +29,7 @@ class GameMainLogicComponent extends Component {
             <ActionComputer />
             <SetScoreComponent />
             <ScoreBoardComponent />
-            {this.props.toggleOver ?
+            {this.props.gameEndedState ?
               <EndScreenComponent/>
               :
               <ActionsComponent />
@@ -45,13 +46,13 @@ const mapStateToProps = state => {
     gameStartedState: state.gameStartedState,
     userScore: state.userScore,
     computerScore: state.computerScore,
-    toggleOver: state.toggleOver
+    gameEndedState: state.gameEndedState
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    setToggle: (type, value) => { dispatch(setToggle(type, value)) }
+    setCycle: (type, value) => { dispatch(setCycle(type, value)) }
   }
 }
 
