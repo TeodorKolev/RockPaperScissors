@@ -14,7 +14,7 @@ export const setScore = type => {
 export const setCycle = (type, value) => {
   return {
     type: type,
-    value: value,
+    value: value
   }
 }
 

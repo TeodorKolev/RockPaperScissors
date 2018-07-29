@@ -1,36 +1,33 @@
-import React, {Component} from 'react'
-import * as Constants from '../utils/constants';
-import {connect} from 'react-redux';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { setScore } from '../actions/gameActions'
+import { DRAW_SCORE, PAPER, ROCK, SCISSORS } from '../utils/constants'
+import { USER_SCORE } from '../utils/constants'
+import { COMPUTER_SCORE } from '../utils/constants'
+import { DEFAULT_ROUND } from '../utils/gameSettings'
 import { Row, Col } from 'react-bootstrap'
-import {
-  setScore
-} from '../actions/gameActions';
-import './SetScore.css';
-import {DRAW_SCORE} from "../utils/constants";
-import {USER_SCORE} from "../utils/constants";
-import {COMPUTER_SCORE} from "../utils/constants";
-import {DEFAULT_ROUND} from "../utils/gameSettings";
+import './SetScore.css'
 
 class SetScore extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.computerRound !== DEFAULT_ROUND && nextProps.computerRound !== this.props.computerRound) {
-      this.setScore(nextProps.userChoice, nextProps.computerChoice);
+      this.setScore(nextProps.userChoice, nextProps.computerChoice)
     }
   }
 
   setScore(userChoice, computerChoice) {
     if (userChoice === computerChoice) {
-      return this.props.setScore(DRAW_SCORE);
+      return this.props.setScore(DRAW_SCORE)
     }
-    if (userChoice === Constants.ROCK) {
-      return computerChoice === Constants.SCISSORS ? this.props.setScore(USER_SCORE) : this.props.setScore(COMPUTER_SCORE);
+    if (userChoice === ROCK) {
+      return computerChoice === SCISSORS ? this.props.setScore(USER_SCORE) : this.props.setScore(COMPUTER_SCORE)
     }
-    if (userChoice === Constants.PAPER) {
-      return computerChoice === Constants.ROCK ? this.props.setScore(USER_SCORE) : this.props.setScore(COMPUTER_SCORE);
+    if (userChoice === PAPER) {
+      return computerChoice === ROCK ? this.props.setScore(USER_SCORE) : this.props.setScore(COMPUTER_SCORE)
     }
-    if (userChoice === Constants.SCISSORS) {
-      return computerChoice === Constants.ROCK ? this.props.setScore(COMPUTER_SCORE) : this.props.setScore(USER_SCORE);
+    if (userChoice === SCISSORS) {
+      return computerChoice === ROCK ? this.props.setScore(COMPUTER_SCORE) : this.props.setScore(USER_SCORE)
     }
   }
 
@@ -58,14 +55,14 @@ class SetScore extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     userScore: state.userScore,
     computerScore: state.computerScore,
     computerRound: state.computerRound,
     userChoice: state.userChoice,
     computerChoice: state.computerChoice
-  };
+  }
 }
 
 
