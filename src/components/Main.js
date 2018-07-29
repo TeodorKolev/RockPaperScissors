@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {setCycle} from '../actions/gameActions'
+import { setCycle } from '../actions/gameActions'
 import ScoreBoard from './ScoreBoard'
 import ActionUser from './ActionUser'
 import Start from './Start'
 import End from './End'
 import * as GameSettings from '../utils/gameSettings'
-import {END} from "../utils/constants";
-import ActionComputer from "./ActionComputer";
-import SetScore from "./SetScore";
+import { END } from '../utils/constants'
+import ActionComputer from './ActionComputer'
+import SetScore from './SetScore'
 
 class Main extends Component {
 
@@ -22,17 +22,17 @@ class Main extends Component {
     return (
       <div>
         {!this.props.gameStartedState ?
-          <Start />
+          <Start/>
           :
           <div>
-            <ActionComputer />
-            <SetScore />
-            <ScoreBoard />
+            <ActionComputer/>
+            <SetScore/>
+            <ScoreBoard/>
             {this.props.gameEndedState ?
               <End/>
               :
-              <ActionUser />
-              }
+              <ActionUser/>
+            }
           </div>
         }
       </div>
@@ -45,13 +45,15 @@ const mapStateToProps = state => {
     gameStartedState: state.gameStartedState,
     gameEndedState: state.gameEndedState,
     userScore: state.userScore,
-    computerScore: state.computerScore,
+    computerScore: state.computerScore
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    setCycle: (type, value) => { dispatch(setCycle(type, value)) }
+    setCycle: (type, value) => {
+      dispatch(setCycle(type, value))
+    }
   }
 }
 

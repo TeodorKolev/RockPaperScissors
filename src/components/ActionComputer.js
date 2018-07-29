@@ -1,20 +1,17 @@
 import { Component } from 'react'
-import * as GameSettings from '../utils/gameSettings'
+import { clearToggles, setChoice, setCycle } from "../actions/gameActions"
+import { connect } from 'react-redux'
+import { CLEAR_TOGGLES, COMPUTER_CHOICE, LOADING } from '../utils/constants'
+import * as Constants from '../utils/constants'
+import { DEFAULT_ROUND } from '../utils/gameSettings'
+import { FADE_DELAY } from "../utils/gameSettings"
 import './End.css'
-import {clearToggles, setChoice, setCycle} from "../actions/gameActions";
-import {connect} from "react-redux";
-import {
-  CLEAR_TOGGLES,
-  COMPUTER_CHOICE, LOADING,
-} from "../utils/constants";
-import * as Constants from "../utils/constants";
-import {DEFAULT_ROUND} from "../utils/gameSettings";
 
 class ActionComputer extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.userRound !== DEFAULT_ROUND && nextProps.userRound !== this.props.userRound) {
-      this.setComputerChoice();
+      this.setComputerChoice()
     }
   }
 
@@ -22,7 +19,7 @@ class ActionComputer extends Component {
     this.hideScoreAlert()
     this.props.setCycle(LOADING, true)
     setTimeout(function() {
-      let computerChoice = Math.random();
+      let computerChoice = Math.random()
       if (computerChoice < 0.34) {
         this.props.setChoice(COMPUTER_CHOICE, Constants.ROCK)
       } else if (computerChoice <= 0.67) {
@@ -31,7 +28,7 @@ class ActionComputer extends Component {
         this.props.setChoice(COMPUTER_CHOICE, Constants.SCISSORS)
       }
       this.props.setCycle(LOADING, false)
-    }.bind(this), GameSettings.FADE_DELAY);
+    }.bind(this), FADE_DELAY)
   }
 
   hideScoreAlert() {
@@ -41,7 +38,6 @@ class ActionComputer extends Component {
   render() {
     return false
   }
-
 }
 
 const mapStateToProps = state => {
