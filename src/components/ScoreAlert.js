@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {CLEAR_TOGGLES} from "../utils/constants";
 import * as GameSettings from "../utils/gameSettings";
 import {clearToggles, setChoice, setCycle} from "../actions/gameActions";
+import {VICTORY_SCORE} from "../utils/gameSettings";
 
 class ScoreAlert extends Component {
 
@@ -24,14 +25,18 @@ class ScoreAlert extends Component {
   render() {
     return(
       <div className='scoreboard-holder'>
-        <div className={`fade ${(
-          this.props.toggleUserScore ||
-          this.props.toggleComputerScore ||
-          this.props.toggleDrawScore) ? 'shown' : 'hided'}`}>
-          {this.props.toggleUserScore ? <span>You score!</span> : null}
-          {this.props.toggleComputerScore ? <span>PC score!</span> : null}
-          {this.props.toggleDrawScore ? <span>Draw!</span> : null}
-        </div>
+        {this.props.userScore < VICTORY_SCORE && this.props.computerScore < VICTORY_SCORE ?
+          <div className={`fade ${(
+            this.props.toggleUserScore ||
+            this.props.toggleComputerScore ||
+            this.props.toggleDrawScore) ? 'shown' : 'hided'}`}>
+            {this.props.toggleUserScore ? <span>You score!</span> : null}
+            {this.props.toggleComputerScore ? <span>PC score!</span> : null}
+            {this.props.toggleDrawScore ? <span>Draw!</span> : null}
+          </div>
+        :
+          null
+        }
       </div>
     )
   }
