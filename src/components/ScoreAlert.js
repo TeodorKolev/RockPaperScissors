@@ -16,9 +16,9 @@ class ScoreAlert extends Component {
   }
 
   togglesClear() {
-    setTimeout(function () {
+    setTimeout(() => {
       this.props.clearToggles(CLEAR_TOGGLES)
-    }.bind(this), FADE_DELAY)
+    }, FADE_DELAY);
   }
 
   render() {
