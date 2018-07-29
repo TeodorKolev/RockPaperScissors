@@ -2,17 +2,15 @@ import React, {Component} from 'react'
 import * as Constants from '../utils/constants';
 import {connect} from 'react-redux';
 import { Row, Col } from 'react-bootstrap'
-import { setScore } from '../actions/gameActions';
+import {
+  setScore
+} from '../actions/gameActions';
 import './SetScoreComponent.css';
 import {DRAW_SCORE} from "../utils/constants";
 import {USER_SCORE} from "../utils/constants";
 import {COMPUTER_SCORE} from "../utils/constants";
 
 class SetScoreComponent extends Component {
-
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     this.props.onRef(this);
@@ -64,7 +62,7 @@ class SetScoreComponent extends Component {
 const mapStateToProps = (state) => {
   return {
     userScore: state.userScore,
-    computerScore: state.computerScore
+    computerScore: state.computerScore,
   };
 }
 

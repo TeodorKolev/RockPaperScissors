@@ -6,10 +6,6 @@ import {connect} from "react-redux";
 
 class ScoreBoardComponent extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     let images = require.context('../assets/img/', true);
     return(

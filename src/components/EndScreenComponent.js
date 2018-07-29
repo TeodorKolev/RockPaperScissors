@@ -8,10 +8,6 @@ import {RESTART} from "../utils/constants";
 
 class EndScreenComponent extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <Grid>

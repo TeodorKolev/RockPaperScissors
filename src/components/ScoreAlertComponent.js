@@ -7,10 +7,6 @@ import {setChoice, setCycle, setToggle} from "../actions/gameActions";
 
 class ScoreAlertComponent extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.userScore !== this.props.userScore) {
       this.toggleResult(TOGGLE_USER_SCORE)

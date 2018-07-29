@@ -10,9 +10,6 @@ import {TOGGLE_OVER} from "../utils/constants";
 import ActionComputer from "./ActionComputer";
 
 class GameMainLogicComponent extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.userScore === GameSettings.VICTORY_SCORE || nextProps.computerScore === GameSettings.VICTORY_SCORE) {

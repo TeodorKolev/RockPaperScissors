@@ -7,10 +7,6 @@ import {START} from "../utils/constants";
 
 class StartScreenComponent extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return(
       <Grid>

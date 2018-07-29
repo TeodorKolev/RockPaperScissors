@@ -8,10 +8,6 @@ import {connect} from "react-redux";
 
 class ActionsComponent extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     let images = require.context('../assets/img/', true)
     const choices = [Constants.ROCK, Constants.PAPER, Constants.SCISSORS]

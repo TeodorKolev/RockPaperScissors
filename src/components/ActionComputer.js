@@ -14,10 +14,6 @@ import SetScoreComponent from "./SetScoreComponent";
 
 class ActionComputer extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.round !== 0 && nextProps.round !== this.props.round) {
       this.setComputerChoice();
